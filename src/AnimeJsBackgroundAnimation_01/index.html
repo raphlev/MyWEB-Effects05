@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Image Distortion Effects</title>
+		<link rel="stylesheet" href="./style.css">
+	</head>
+	<body>
+		<div class="container"></div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+		<script type="text/javascript">
+
+			var container = document.querySelector('.container')
+			for (var i = 0; i <= 850; i++) {
+				var dotEl = document.createElement('div');
+				dotEl.classList.add('dot');
+				container.appendChild(dotEl);
+			}
+
+			var dot = document.querySelectorAll('.dot')
+			var animation = anime.timeline({
+		      targets: dot,
+		      easing: 'easeInOutExpo',
+		      delay: anime.stagger(10, {start: 50}),
+		      loop: true,
+		    });
+
+		    animation
+		      .add({
+		        scale: 0,
+		        rotate:  function() { return anime.random(-360,360);},
+		        translateX:  function() { return anime.random(360,2100);},
+		        translateY:  function() { return anime.random(360,-2100);},
+		      	duration: function() { return anime.random(500,3000); },
+		      })
+		      .add({
+		        scale: 1,
+		        rotate: 0,
+		        translateX: 0,
+		        translateY: 0,
+		      	duration: function() { return anime.random(500,3000); },
+		      })
+		</script>
+	</body>
+</html>
